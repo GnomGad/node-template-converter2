@@ -1,0 +1,11 @@
+{
+    "compilerOptions": {
+        "target": "es6",
+        "module": "commonJS",
+        "checkJs": true
+    },
+    "exclude": [
+        "node_modules"
+    ],
+    "editor.tabCompletion": "on"
+}
