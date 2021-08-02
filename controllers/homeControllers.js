@@ -1,6 +1,11 @@
-exports.index = function (request, response) {
-    response.render("index.hbs",{
+exports.index = function (req, res) {
+    res.render("index.hbs",{
         title: 'Главная'
     });
 };
 
+exports.test = async function(req, res) {
+    res.render("test.hbs",{
+        title: 'Проверка'
+    });
+}

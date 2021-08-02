@@ -61,6 +61,14 @@ function createTemplate(res, templateName, pdfName){
     return outputPath;
 }
 
+function createTemplateUploads(res, templateName, jsonName){
+    let outputPath = path.resolve(templateName +new Date().getTime()+ '.docx');
+    var obj = JSON.parse(fs.readFileSync(path.resolve(jsonName), 'utf8'));
+    var tp = new Templater(templateName,outputPath);
+    tp.fill(obj);
+    return outputPath;
+}
+
 exports.convertOneOpt = async function(req, res){
     let downloadPath = createTemplate(res, '1-opt_m', '1-opt_m');
     res.download(downloadPath);
@@ -68,5 +76,10 @@ exports.convertOneOpt = async function(req, res){
 
 exports.convertOnePE = async function (req, res) {
     let downloadPath = createTemplate(res, '1-PE_m', '1-PE_m');
+    res.download(downloadPath);
+}
+
+exports.convertCustom = async function(req, res){
+    let downloadPath = createTemplateUploads(res,  req.files['fileDocx'][0].path,  req.files['fileJson'][0].path);
     res.download(downloadPath);
 }
