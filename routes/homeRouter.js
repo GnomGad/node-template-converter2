@@ -8,6 +8,7 @@ homeRouter.get("/1-OPT", covController.convertOneOpt);
 homeRouter.get("/1-PE", covController.convertOnePE);
 
 
+homeRouter.post(("/upload"), covController.convertCustom);
 homeRouter.get("/test", homeController.test);
 homeRouter.get("/", homeController.index);
 
